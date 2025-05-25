@@ -4,13 +4,13 @@ import OpenAI from "openai";
 
 dotenv.config();
 
-const { AUTH_TOKEN, MCP_SERVER, OPEN_API_KEY } = process.env;
+const { AUTH_TOKEN, MCP_SERVER, OPENAI_API_KEY } = process.env;
 
 // For list of services, see ...
 const url = `${MCP_SERVER}/mcp?services=Studio&services=PhoneNumbers`;
 const signature = twilio.getExpectedTwilioSignature(AUTH_TOKEN, url, {});
 
-const openai = new OpenAI({ apiKey: OPEN_API_KEY });
+const openai = new OpenAI({ apiKey: OPENAI_API_KEY });
 const response = await openai.responses.create({
   model: "o3",
   instructions:
